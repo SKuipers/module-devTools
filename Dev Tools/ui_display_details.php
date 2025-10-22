@@ -27,12 +27,7 @@ if (Access::denies('Dev Tools', 'ui_display_details')) {
 
 $page->breadcrumbs->add(__m('Details Tables'));
 
-$sampleData = [
-    [
-        'name' => 'Test',
-        'status' => 'Testing',
-    ],
-];
+$sampleData = include('data/sampleDetailsData.php');
 
 // Details Table
 $table = DataTable::createDetails('exampleTable');
@@ -42,7 +37,6 @@ $table->addColumn('name', __('Name'));
 $table->addColumn('status', __('Status'));
 
 $page->write($table->render($sampleData));
-
 
 // Formatters
 // $table = DataTable::createDetails('exampleTable2');

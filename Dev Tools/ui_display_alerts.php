@@ -30,6 +30,7 @@ $page->breadcrumbs->add(__m('Return Codes'));
 
 // Alerts
 $page->write(Format::heading(__('Alert Types')));
+$page->write(Format::paragraph(__('Feedback text is displayed as an alert, coloured based on its context.')));
 
 $page->write(Format::alert('Magic: '. __('Something neat has just happened, like a quicksave.'), 'magic'));
 
@@ -45,11 +46,10 @@ $page->write(Format::alert('Exception: '. __('Something has gone horribly wrong 
 
 $page->write(Format::alert('Empty: '. __('There is nothing here, this is an empty state.'), 'empty'));
 
-$page->write('<br><br>');
-
 
 // Return codes
 $page->write(Format::heading(__('Return Codes')));
+$page->write(Format::paragraph(__('Return codes are sent from process pages to display alerts on the following page.')));
 
 $returns = $container->get(ReturnMessage::class);
 $returnCodes = $returns->getReturns();

@@ -65,6 +65,9 @@ $form->addSelectTransport('Transport')
 $form->addTextFieldDistrict('District')
     ->label(__('District'));
 
+$form->addPhoneNumber('phoneNumber')
+    ->label(__('Phone Number'));
+
 
 // School Data
 $form->addSection('School Data', __('School Data'));

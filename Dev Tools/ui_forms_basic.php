@@ -17,10 +17,10 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-use Gibbon\Support\Facades\Access;
 use Gibbon\Forms\Form;
 use Gibbon\Data\PasswordPolicy;
 use Gibbon\Forms\DatabaseFormFactory;
+use Gibbon\Support\Facades\Access;
 
 if (Access::denies('Dev Tools', 'ui_forms_basic')) {
 	$page->addError(__('You do not have access to this action.'));
@@ -31,7 +31,6 @@ $page->breadcrumbs->add(__m('Basic Fields'));
 
 // Form
 $form = Form::create('basic', '#');
-$form->setFactory(DatabaseFormFactory::create($pdo));
 
 $form->addMeta('test');
 
@@ -43,6 +42,10 @@ $form->addTextField('textField')
     ->required()
     ->maxLength(60);
 
+$form->addTextField('autocomplete')
+    ->label(__('Text Field'), __('With autocomplete'))
+    ->autocomplete(['Test 1','Test 2','Test 3']);
+
 $form->addTextArea('textArea')
     ->label(__('Text Area'))
     ->setRows(3);
@@ -53,9 +56,6 @@ $form->addEmail('email')
 $form->addUrl('url')
     ->label(__('Url'));
 
-$form->addTextField('autocomplete')
-    ->label(__('Autocomplete'))
-    ->autocomplete(['Test 1','Test 2','Test 3']);
 
 
 // Numbers
@@ -66,9 +66,6 @@ $form->addNumber('number')
 
 $form->addCurrency('currency')
     ->label(__('Currency'));
-
-$form->addPhoneNumber('phoneNumber')
-    ->label(__('Phone Number'));
 
 $form->addRange('range', 1, 5, 1)
     ->label(__('Range'))

@@ -42,8 +42,8 @@ $table->setTitle(__('Paginated Table'));
 $table->setDescription(__('Paginated tables automatically handle multiple pages of data, as well as sorting and filtering results.'));
 
 $table->addHeaderAction('add', __('Add'))
-        ->setURL(Url::fromModuleRoute('Dev Tools', 'ui_tables_paginated'))
-        ->displayLabel();
+    ->setURL(Url::fromModuleRoute('Dev Tools', 'ui_tables_paginated'))
+    ->displayLabel();
 
 $table->addMetaData('filterOptions', [
     'active:yes' => __('Active').': '.__('Yes'),
@@ -66,10 +66,10 @@ $table->addActionColumn()
     ->addParam('gibboni18nID')
     ->format(function ($values, $actions) {
         $actions->addAction('edit', __('Edit'))
-                ->setURL(Url::fromModuleRoute('Dev Tools', 'ui_tables_paginated'));
+            ->setURL(Url::fromModuleRoute('Dev Tools', 'ui_tables_paginated'));
 
         $actions->addAction('copy', __('Duplicate'))
-                ->setURL(Url::fromModuleRoute('Dev Tools', 'ui_tables_paginated'));
+            ->setURL(Url::fromModuleRoute('Dev Tools', 'ui_tables_paginated'));
 
         $actions->addAction('delete', __('Delete'))
             ->setURL(Url::fromModuleRoute('Dev Tools', 'ui_tables_paginated'));

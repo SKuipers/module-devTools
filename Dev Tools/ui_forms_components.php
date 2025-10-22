@@ -48,7 +48,6 @@ $form->addToggle('active')
     ->setActiveInactive()
     ->label(__('Active / Inactive'));
 
-
 // Editors
 $form->addSection('Text Editors', __('Text Editors'));
 

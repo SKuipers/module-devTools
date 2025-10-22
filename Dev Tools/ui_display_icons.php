@@ -22,6 +22,8 @@ use Gibbon\Services\Format;
 use Gibbon\Tables\DataTable;
 use Gibbon\Tables\View\GridView;
 use Gibbon\Support\Facades\Access;
+use Gibbon\Module\DevTools\DevFormat;
+
 
 if (Access::denies('Dev Tools', 'ui_display_icons')) {
 	$page->addError(__('You do not have access to this action.'));
@@ -38,7 +40,7 @@ foreach ($libraries as $library) {
 
     $table = DataTable::create($library)->setRenderer(new GridView($container->get('twig')));
     $table->setTitle(ucwords($library));
-    $table->setDescription('<code class="rounded-md text-xs bg-gray-100 p-2">'.htmlPrep("icon('".strtolower($library)."', 'icon-name', '{$class}')").'</code>');
+    $table->setDescription(DevFormat::code("icon('".strtolower($library)."', 'icon-name', '{$class}')").'</code>');
 
     $table->addMetaData('gridClass', 'gap-4');
     $table->addMetaData('gridItemClass', 'flex justify-start border w-48 rounded text-center text-gray-600 text-xs px-4 py-8 gap-1 hover:bg-gray-100');

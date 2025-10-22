@@ -82,7 +82,7 @@ return [
         'color'         => 'rgba(133, 233, 194, 1.0)',
     ],
     [
-        'name'          => 'Test 5',
+        'name'          => 'Test 6',
         'description'   => 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         'result'        => 'dull',
         'age'           => date('Y-m-d', strtotime('-6 years -4 months')),

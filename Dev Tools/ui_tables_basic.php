@@ -44,13 +44,12 @@ $table->addColumn('description', __('Description'))
     ->width('40%')
     ->format(Format::using('small', 'description'));
 
-$table->addColumn('result', __('result'))
+$table->addColumn('result', __('Result'))
     ->context('primary')
     ->translatable()
     ->format(Format::using('tag', ['result', 'result']));
 
 $page->write($table->render($sampleData));
-
 
 // Row Highlights
 $table = DataTable::create('table2');
@@ -73,7 +72,7 @@ $table->addColumn('description', __('Description'))
     ->width('40%')
     ->format(Format::using('small', 'description'));
 
-$table->addColumn('result', __('result'))
+$table->addColumn('result', __('Result'))
     ->context('primary')
     ->translatable();
 

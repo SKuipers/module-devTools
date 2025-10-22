@@ -49,10 +49,6 @@ $form->addHiddenValue('step', $params['step'] + 1);
 // Text
 $form->addSection('Text', __('Text'));
 
-$form->addTextField('textField')
-    ->label(__('Text Field'), __('Help text to assist the user'))
-    ->maxLength(60);
-
 $form->addTextField('textField2')
     ->label(__('Text Field'))
     ->maxLength(60);

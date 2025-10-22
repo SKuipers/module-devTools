@@ -20,6 +20,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 use Gibbon\Services\Format;
 use Gibbon\Tables\DataTable;
 use Gibbon\Support\Facades\Access;
+use Gibbon\Module\DevTools\DevFormat;
 
 if (Access::denies('Dev Tools', 'ui_tables_basic')) {
 	$page->addError(__('You do not have access to this action.'));
@@ -28,29 +29,71 @@ if (Access::denies('Dev Tools', 'ui_tables_basic')) {
 
 $page->breadcrumbs->add(__m('Formatters'));
 
-$sampleData = include('data/sampleTableData.php');
+$page->write(Format::heading(__('Formatters')));
 
-/**
- * Use the ->format() and ->formatDetails() methods to apply formatters to a column.
- * 
- * These methods take a callable. There are a few ways to use these.
- * 
- * 1. The Format::using method is a helper that returns a callable. The first 
- * parameter is the formatter name, the second is the array key, or an array of 
- * array keys for your data set.
- * 
- * ->format(Format::using('bold', 'name'));
- * 
- * 2. Or, use an anonymous function that directly applies the formatter. 
- * ->format(function ($values) {
+$page->write(Format::paragraph(<<<HTML
+    Use the ->format() and ->formatDetails() methods to apply formatters to a column. These methods take a callable.
+
+    1. The Format::using method is a helper that returns a callable. The first 
+    parameter is the formatter name, the second is the array key, or an array of 
+    array keys for your data set.
+    HTML
+));
+
+$page->write(DevFormat::codeBlock(<<<HTML
+    ->format(Format::using('bold', 'name'));
+    HTML
+));
+
+$page->write(Format::paragraph(<<<HTML
+    2. Or, use an anonymous function that directly applies the formatter. 
+    HTML
+));
+
+$page->write(DevFormat::codeBlock(<<<HTML
+    ->format(function (\$values) {
+        return Format::bold(\$values['name']);
+    });
+    HTML
+));
+
+$page->write(Format::paragraph(<<<HTML
+    3. Or, create custom formats using the values from the data set.
+    HTML
+));
+
+$page->write(DevFormat::codeBlock(<<<HTML
+    ->format(function (\$values) {
+        return \$values['data1'].' plus '.\$values['data2'];
+    }); 
+    HTML
+));
+
+/*
+    Use the ->format() and ->formatDetails() methods to apply formatters to a column.
+
+    These methods take a callable. There are a few ways to use these.
+
+    1. The Format::using method is a helper that returns a callable. The first 
+    parameter is the formatter name, the second is the array key, or an array of 
+    array keys for your data set.
+
+    ->format(Format::using('bold', 'name'));
+
+    2. Or, use an anonymous function that directly applies the formatter. 
+
+    ->format(function ($values) {
         return Format::bold($values['name']);
     });
- * 
- * 3. Or, create custom formats using the values from the data set.
- * ->format(function ($values) {
+
+    3. Or, create custom formats using the values from the data set.
+    
+    ->format(function ($values) {
         return $values['data1'].' plus '.$values['data2'];
     }); 
- */
+*/
+
+$sampleData = include('data/sampleTableData.php');
 
 // Common Formats
 $table = DataTable::create('table3');

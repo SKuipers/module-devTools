@@ -18,6 +18,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
 use Gibbon\Support\Facades\Access;
+use Gibbon\Services\Format;
 
 if (Access::denies('Dev Tools', 'index')) {
 	$page->addError(__('You do not have access to this action.'));
@@ -26,3 +27,4 @@ if (Access::denies('Dev Tools', 'index')) {
 
 $page->breadcrumbs->add(__('Overview'));
 
+$page->write(Format::paragraph(__('The dev tools module provides utilities and UI libraries for development and testing. The module itself is under development, more here soon.')));
