@@ -39,7 +39,7 @@ $form->addMeta();
 $form->addSection('User Data', __('User Data'));
 
 $form->addSelectTitle('title')
-    ->label(__('Title'));
+    ->label(__('Title'))->required();
 
 $form->addSelectGender('gender')
     ->label(__('Gender'));
@@ -118,7 +118,7 @@ $form->addSelectRubric('Rubric', '001,002,003')
 $form->addSection('System Data', __('System Data'));
 
 $form->addSelectSystemLanguage('SystemLanguage')
-    ->label(__('System Language'))->placeholder();
+    ->label(__('System Language'))->placeholder()->required();
 
 $form->addSelectCurrency('Currency')
     ->label(__('Currency'));

@@ -27,4 +27,4 @@ if (Access::denies('Dev Tools', 'index')) {
 
 $page->breadcrumbs->add(__('Overview'));
 
-$page->write(Format::paragraph(__('The dev tools module provides utilities and UI libraries for development and testing. The module itself is under development, more here soon.')));
+// $page->write(Format::paragraph(__('The dev tools module provides utilities and UI libraries for development and testing. The module itself is under development, more here soon.')));

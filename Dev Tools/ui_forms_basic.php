@@ -57,7 +57,6 @@ $form->addUrl('url')
     ->label(__('Url'));
 
 
-
 // Numbers
 $form->addSection('Numbers', __('Numbers'));
 
@@ -84,6 +83,30 @@ $form->addDate('date2')
     ->label(__('Date & Time'))
     ->attach()
     ->addTime('time2');
+
+
+$row = $form->addRow();
+    $row->addLabel('dateStart', __('Date'));
+
+    $row->addDate('dateStart')->chainedTo('dateEnd')->required()->setValue();
+    $row->addDate('dateEnd')->chainedFrom('dateStart')->setValue();
+
+    $row->addCheckbox('allDay')
+        ->description(__('All Day'))
+        ->setOuterClass('w-min')
+        ->inline()
+        ->setValue('Y')
+        ->checked('Y');
+
+$form->toggleVisibilityByClass('timeOptions')->onCheckbox('allDay')->whenNot('Y');
+
+$row = $form->addRow()->addClass('timeOptions');
+    $row->addLabel('time', __('Time'));
+    $row->addTime('timeStart')
+        ->required();
+    $row->addTime('timeEnd')
+        ->chainedTo('timeStart')
+        ->required();
 
 // Options
 $form->addSection('Options', __('Options'));

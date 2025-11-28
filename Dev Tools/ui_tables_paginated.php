@@ -32,7 +32,7 @@ $page->breadcrumbs->add(__m('Paginated Tables'));
 
 $gateway = $container->get(I18nGateway::class);
 $criteria = $gateway->newQueryCriteria()
-    ->pageSize(5)
+    ->pageSize(10)
     ->fromPost();
 
 $sampleData = $gateway->queryI18n($criteria);

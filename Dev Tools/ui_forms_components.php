@@ -48,6 +48,19 @@ $form->addToggle('active')
     ->setActiveInactive()
     ->label(__('Active / Inactive'));
 
+// Text
+$form->addSection('Other', __('Other'));
+
+
+$form->addTextField('textField')
+    ->label(__('Text Field'), __('Help text to assist the user'))
+    ->required()
+    ->maxLength(60);
+    
+$form->addTokenList('list')
+    ->label(__('Text List'))
+    ->setValue('Thing, Thing 2, Thing 3');
+
 // Editors
 $form->addSection('Text Editors', __('Text Editors'));
 

@@ -78,6 +78,11 @@ $actions = [
         'entryURL' => 'ui_forms_components.php',
     ],
     [
+        'name'     => 'Custom Blocks',
+        'category' => 'UI Forms',
+        'entryURL' => 'ui_forms_blocks.php',
+    ],
+    [
         'name'     => 'Files & Uploads',
         'category' => 'UI Forms',
         'entryURL' => 'ui_forms_files.php',
